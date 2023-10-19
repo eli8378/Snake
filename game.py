@@ -1,14 +1,14 @@
 from fruit import Fruit
 from snake import Snake
-import config
 
 import pygame
 
 
 class Game:
     def __init__(self):
-        config.cellSize = 40
-        config.cellNumber = 20
+        self.cellSize = 40
+        self.cellNumber = 20
+        self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
         self.snake = Snake()
         self.fruit = Fruit()
 
@@ -27,9 +27,9 @@ class Game:
             self.snake.body.append(self.snake.body[-1] + self.snake.direction)
 
     def checkFailure(self):
-        if not 0 <= self.snake.body[0].x < config.cellNumber:
+        if not 0 <= self.snake.body[0].x < self.cellNumber:
             pygame.quit()
-        elif not 0 <= self.snake.body[0].y < config.cellNumber:
+        elif not 0 <= self.snake.body[0].y < self.cellNumber:
             pygame.quit() 
         for block in self.snake.body[1:]:
             if block == self.snake.body[0]:

@@ -2,7 +2,6 @@ import pygame
 from pygame.math import Vector2
 
 from game import Game
-import config
 
 pygame.init()
 pygame.display.set_caption("Snake Game")
@@ -11,6 +10,9 @@ game = Game()
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
+cellSize = 40
+cellNumber = 20
+screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
 
 running = True
 while running:
@@ -33,7 +35,7 @@ while running:
                 if game.snake.direction.x != -1:
                     game.snake.direction = Vector2(1,0)
                 
-    config.screen.fill((175,215,70))
+    screen.fill((175,215,70))
     game.drawElements()
     pygame.display.update()
     clock.tick(60)
