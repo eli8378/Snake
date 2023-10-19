@@ -52,15 +52,16 @@ def main():
                 running = False
             if event.type == SCREEN_UPDATE:
                 snake.moveSnake()
-            if keys[pygame.K_LEFT]: 
-                x -= velocity
-            if keys[pygame.K_RIGHT]: 
-                x += velocity
-            if keys[pygame.K_UP]: 
-                y -= velocity
-            if keys[pygame.K_DOWN]: 
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    snake.direction
+                    snake.direction = Vector2(0,-1)
+                elif event.key == pygame.K_DOWN:
+                    snake.direction = Vector2(0,1)
+                elif event.key == pygame.K_LEFT:
+                    snake.direction = Vector2(-1,0)
+                elif event.key == pygame.K_RIGHT:
+                    snake.direction = Vector2(1,0)
+
 
 
         screen.fill((175,215,70))
