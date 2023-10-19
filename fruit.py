@@ -14,4 +14,4 @@ class Fruit:
 
     def drawFruit(self): 
         fruitRect = pygame.Rect(int(self.pos.x * self.cellSize),int(self.pos.y * self.cellSize), self.cellSize, self.cellSize)
-        pygame.draw.rect(self.screen, (126,166,114), fruitRect)
+        pygame.draw.rect(self.screen, (240,166,114), fruitRect)

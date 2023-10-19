@@ -15,7 +15,7 @@ class Snake:
             self.xpos = int(block.x * self.cellSize)
             self.ypos = int(block.y * self.cellSize)
             blockRect = pygame.Rect(self.xpos, self.ypos, self.cellSize, self.cellSize)
-            pygame.draw.rect(self.screen, (183,191,122), blockRect)
+            pygame.draw.rect(self.screen, (183,191,230), blockRect)
 
     def moveSnake(self):
         bodyCopy = self.body[:-1]
