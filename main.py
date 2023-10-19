@@ -35,17 +35,34 @@ pygame.init()
 cellSize = 40
 cellNumber = 20
 screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
+pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
 fruit = Fruit()
 snake = Snake()
 
-def main():
+SCREEN_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(SCREEN_UPDATE, 150)
 
+def main():
+    keys = pygame.key.get_pressed()
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == SCREEN_UPDATE:
+                snake.moveSnake()
+            if keys[pygame.K_LEFT]: 
+                x -= velocity
+            if keys[pygame.K_RIGHT]: 
+                x += velocity
+            if keys[pygame.K_UP]: 
+                y -= velocity
+            if keys[pygame.K_DOWN]: 
+                if event.key == pygame.K_UP:
+                    snake.direction
+
+
         screen.fill((175,215,70))
         fruit.drawFruit()
         snake.drawSnake()
