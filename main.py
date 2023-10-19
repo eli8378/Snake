@@ -1,8 +1,6 @@
 import pygame
 from pygame.math import Vector2
 
-import sys
-
 from game import Game
 
 pygame.init()
@@ -14,6 +12,7 @@ SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 cellSize = 40
 cellNumber = 20
+gameActive = True
 screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
 
 running = True
@@ -36,10 +35,19 @@ while running:
             elif event.key == pygame.K_RIGHT:
                 if game.snake.direction.x != -1:
                     game.snake.direction = Vector2(1,0)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if game.quitRect.collidepoint(event.pos):
+                    pygame.quit()
+
                 
-    screen.fill((175,215,70))
-    game.drawElements()
-    pygame.display.update()
+
+    if gameActive:
+        screen.fill((175,215,70))
+        game.drawElements()
+        pygame.display.update()
+    if game.checkFailure() == "failed":
+        gameActive = False
+        game.gameOverScreen()
+
     clock.tick(60)
 pygame.quit()
-sys.quit()

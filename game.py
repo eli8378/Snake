@@ -31,21 +31,12 @@ class Game:
 
     def checkFailure(self):
         if not 0 <= self.snake.body[0].x < self.cellNumber:
-            self.screen.fill((175,215,70))
-            self.gameOverScreen()
-            pygame.time.wait(1300)
-            pygame.quit()
+            return "failed"
         elif not 0 <= self.snake.body[0].y < self.cellNumber:
-            self.screen.fill((175,215,70))
-            self.gameOverScreen()
-            pygame.time.wait(1300)
-            pygame.quit()
+            return "failed"
         for block in self.snake.body[1:]:
             if block == self.snake.body[0]:
-                self.screen.fill((175,215,70))
-                self.gameOverScreen()
-                pygame.time.wait(1300)
-                pygame.quit()
+                return "failed"
 
     def drawScore(self):
         self.scoreText = str(len(self.snake.body) - 3)
@@ -56,25 +47,29 @@ class Game:
         self.screen.blit(self.scoreSurface, self.scoreRect)
     
     def gameOverScreen(self):
+        self.screen.fill((175,215,70))
         self.gameOverSurface = self.gameFont.render("GAME OVER", True, (56,74,12))
         self.showScoreSurface = self.gameFont.render("SCORE: ", True, (56,74,12))
         self.gameOverRect = self.gameOverSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2))
         self.showScoreRect = self.showScoreSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 - 18, self.cellSize * self.cellNumber / 2 + 60))
         self.scoreRect = self.scoreSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 + 45, self.cellSize * self.cellNumber / 2 + 60))
+        self.quitButton()
+        self.tryAgainButton()
         self.screen.blit(self.gameOverSurface, self.gameOverRect)
         self.screen.blit(self.showScoreSurface, self.showScoreRect)
         self.screen.blit(self.scoreSurface, self.scoreRect)
         pygame.display.update()
 
-"""
     def quitButton(self):
-        quitSurface = self.gameFont.render("QUIT", True, (56,74,12))
-        quitRect = quitSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2 + 60))
-        self.screen.blit(quitSurface, quitRect)
+        self.quitSurface = self.gameFont.render("QUIT", True, (56,74,12))
+        self.quitRect = self.quitSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 - 45, self.cellSize * self.cellNumber / 2 + 120))
+        self.screen.blit(self.quitSurface, self.quitRect)
 
     def tryAgainButton(self):
         tryAgainSurface = self.gameFont.render("TRY AGAIN", True, (56,74,12))
-        tryAgainRect = tryAgainSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2 + 120))
+        tryAgainRect = tryAgainSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 + 41, self.cellSize * self.cellNumber / 2 + 120))
         self.screen.blit(tryAgainSurface, tryAgainRect)
 
-"""
+
+
+        
