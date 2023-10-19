@@ -1,6 +1,8 @@
 import pygame
 from pygame.math import Vector2
 
+import sys
+
 from game import Game
 
 pygame.init()
@@ -40,3 +42,4 @@ while running:
     pygame.display.update()
     clock.tick(60)
 pygame.quit()
+sys.quit()
