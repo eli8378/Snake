@@ -1,6 +1,8 @@
 import pygame
 from pygame.math import Vector2
 
+import sys
+
 from game import Game
 
 pygame.init()
@@ -26,28 +28,25 @@ while running:
             if event.key == pygame.K_UP:
                 if game.snake.direction.y != 1:
                     game.snake.direction = Vector2(0,-1)
-            elif event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN:
                 if game.snake.direction.y != -1:
                     game.snake.direction = Vector2(0,1)
-            elif event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT:
                 if game.snake.direction.x != 1:
                     game.snake.direction = Vector2(-1,0)
-            elif event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT:
                 if game.snake.direction.x != -1:
                     game.snake.direction = Vector2(1,0)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if game.quitRect.collidepoint(event.pos):
-                    pygame.quit()
+        if event.type == pygame.MOUSEBUTTONUP:
 
-                
 
     if gameActive:
         screen.fill((175,215,70))
         game.drawElements()
         pygame.display.update()
     if game.checkFailure() == "failed":
-        gameActive = False
-        game.gameOverScreen()
-
+            gameActive = False
+            game.gameOverScreen()
     clock.tick(60)
+
 pygame.quit()
