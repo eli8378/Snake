@@ -15,7 +15,7 @@ class Game:
         self.fruit = Fruit()
 
     def update(self):
-        self.snake.moveSnake()
+        self.snake.update()
         self.checkCollision()
         self.checkFailure()
 
@@ -69,6 +69,15 @@ class Game:
         tryAgainSurface = self.gameFont.render("TRY AGAIN", True, (56,74,12))
         tryAgainRect = tryAgainSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 + 41, self.cellSize * self.cellNumber / 2 + 120))
         self.screen.blit(tryAgainSurface, tryAgainRect)
+
+    def startMenu(self):
+        self.screen.fill((175,215,70))
+        self.startSurface = self.gameFont.render("SNAKE GAME", True, (56,74,12))
+        self.startRect = self.startSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2))
+        self.screen.blit(self.startSurface, self.startRect)
+
+    
+
 
 
 
