@@ -29,3 +29,18 @@ class Snake:
         bodyCopy = self.body[:-1]
         bodyCopy.insert(0, bodyCopy[0] + self.direction)
         self.body = bodyCopy[:]
+
+    def snakeLogic(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                if self.direction.y != 1:
+                    self.direction = Vector2(0,-1)
+            if event.key == pygame.K_s:
+                if self.direction.y != -1:
+                    self.direction = Vector2(0,1)
+            if event.key == pygame.K_a:
+                if self.direction.x != 1:
+                    self.direction = Vector2(-1,0)
+            if event.key == pygame.K_d:
+                if self.direction.x != -1:
+                    self.direction = Vector2(1,0)

@@ -47,5 +47,3 @@ class Start:
         self.quitButtonSurface = self.gameFont.render("QUIT", True, (56,74,12))
         self.quitButtonRect = self.quitButtonSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2 + 100))
         self.screen.blit(self.quitButtonSurface, self.quitButtonRect)
-        self.quitButtonRect = self.quitButtonRect
-    

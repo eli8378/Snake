@@ -29,26 +29,14 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == SCREEN_UPDATE:
+            if isPlaying:
+                game.update()
         start.startLogic(event)
         start.quitLogic(event)
         end.quitLogic(event)
         end.tryAgainLogic(event)
-        if event.type == SCREEN_UPDATE:
-            if isPlaying:
-                game.update()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                if game.snake.direction.y != 1:
-                    game.snake.direction = Vector2(0,-1)
-            if event.key == pygame.K_s:
-                if game.snake.direction.y != -1:
-                    game.snake.direction = Vector2(0,1)
-            if event.key == pygame.K_a:
-                if game.snake.direction.x != 1:
-                    game.snake.direction = Vector2(-1,0)
-            if event.key == pygame.K_d:
-                if game.snake.direction.x != -1:
-                    game.snake.direction = Vector2(1,0)
+        game.snake.snakeLogic(event)
 
     if startMenu:
         start.startMenu()
