@@ -59,7 +59,6 @@ while running:
             isPlaying = True
             game = Game()
             end = End()
-            
 
     pygame.display.update()
 
