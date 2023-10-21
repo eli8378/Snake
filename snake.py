@@ -7,7 +7,7 @@ class Snake:
         self.cellSize = 40
         self.cellNumber = 20
         self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
-        self.body = [Vector2(7,10), Vector2(8,10), Vector2(9,10)]
+        self.body = [Vector2(10,10), Vector2(11,10), Vector2(12,10)]
         self.direction = Vector2(-1,0)
         self.moveInterval = 1.0
         self.moveTimer = 0

@@ -60,7 +60,7 @@ while running:
             gameOver = True
             isPlaying = False
     if gameOver:
-        end.gameOverScreen()
+        end.endMenu()
         if keys[pygame.K_q]:
             running = False
         if keys[pygame.K_r]:
