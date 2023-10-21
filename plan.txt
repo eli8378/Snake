@@ -1,0 +1,6 @@
+To Do:
+    - Fix Final Score on End Menu
+    - Make buttons more accessible and appealing
+    - Add Graphics
+    - Add Animations
+    - Add Sounds
