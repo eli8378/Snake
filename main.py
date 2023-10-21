@@ -52,14 +52,13 @@ while running:
             startMenu = False
             isPlaying = True
     if isPlaying:
-
         screen.fill((175,215,70))
         game.drawElements()
         if game.checkFailure() == "failed":
             gameOver = True
             isPlaying = False
     if gameOver:
-        end.gameOverScreen()
+        end.endMenu()
 
     pygame.display.update()
 

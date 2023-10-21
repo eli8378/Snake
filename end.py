@@ -1,6 +1,7 @@
 import pygame
 
 from snake import Snake
+from game import Game
 
 class End:
     def __init__(self):
@@ -9,26 +10,34 @@ class End:
         self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
         self.gameFont = pygame.font.Font(None, 25)
         self.snake = Snake()
+        self.game = Game()
         self.scoreText = str(len(self.snake.body) - 3)
+
+    def endMenu(self):
+        self.screen.fill((175,215,70))
+        self.drawScoreOnEnd()
+        self.quitButton()
+        self.tryAgainButton()
+        self.drawScoreGameOver()
+        self.drawGameOverText()
+        pygame.display.update()
 
     def drawScoreGameOver(self):
         self.scoreText = str(len(self.snake.body) - 3)
         self.scoreSurface = self.gameFont.render(self.scoreText, True, (56,74,12))
         self.scoreRect = self.scoreSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 + 45, self.cellSize * self.cellNumber / 2 + 60))
         self.screen.blit(self.scoreSurface, self.scoreRect)
-    
-    def gameOverScreen(self):
-        self.screen.fill((175,215,70))
+
+    def drawGameOverText(self):
         self.gameOverSurface = self.gameFont.render("GAME OVER", True, (56,74,12))
-        self.showScoreSurface = self.gameFont.render("SCORE: ", True, (56,74,12))
         self.gameOverRect = self.gameOverSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2))
-        self.showScoreRect = self.showScoreSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 - 18, self.cellSize * self.cellNumber / 2 + 60))
-        self.drawScoreGameOver()
-        self.quitButton()
-        self.tryAgainButton()
         self.screen.blit(self.gameOverSurface, self.gameOverRect)
+    
+    def drawScoreOnEnd(self):
+        self.screen.fill((175,215,70))
+        self.showScoreSurface = self.gameFont.render("SCORE: ", True, (56,74,12))
+        self.showScoreRect = self.showScoreSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 - 18, self.cellSize * self.cellNumber / 2 + 60))
         self.screen.blit(self.showScoreSurface, self.showScoreRect)
-        pygame.display.update()
 
     def quitButton(self):
         self.quitSurface = self.gameFont.render("QUIT", True, (56,74,12))
