@@ -25,6 +25,7 @@ screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
 
 running = True
 while running:
+    keys = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -32,27 +33,27 @@ while running:
             if isPlaying:
                 game.update()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_w:
                 if game.snake.direction.y != 1:
                     game.snake.direction = Vector2(0,-1)
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_s:
                 if game.snake.direction.y != -1:
                     game.snake.direction = Vector2(0,1)
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_a:
                 if game.snake.direction.x != 1:
                     game.snake.direction = Vector2(-1,0)
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_d:
                 if game.snake.direction.x != -1:
                     game.snake.direction = Vector2(1,0)
 
     if startMenu:
         start.startMenu()
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_r]:
+        if start.startLogic() == "start" or keys[pygame.K_r]:
             startMenu = False
             isPlaying = True
+        if start.quitLogic() == "quit" or keys[pygame.K_q]:
+            running = False
     if isPlaying:
-
         screen.fill((175,215,70))
         game.drawElements()
         if game.checkFailure() == "failed":
@@ -60,6 +61,14 @@ while running:
             isPlaying = False
     if gameOver:
         end.gameOverScreen()
+        if keys[pygame.K_q]:
+            running = False
+        if keys[pygame.K_r]:
+            gameOver = False
+            isPlaying = True
+            game = Game()
+            startMenu = False
+            
 
     pygame.display.update()
 
