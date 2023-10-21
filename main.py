@@ -22,6 +22,9 @@ screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
 running = True
 while running:
     for event in pygame.event.get():
+        if event.type == SCREEN_UPDATE:
+            if isPlaying:
+                game.update()
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
@@ -47,7 +50,6 @@ while running:
     if isPlaying:
         screen.fill((175,215,70))
         game.drawElements()
-        game.update()
         if game.checkFailure() == "failed":
             gameOver = True
             isPlaying = False

@@ -7,12 +7,14 @@ class Snake:
         self.cellSize = 40
         self.cellNumber = 20
         self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
-        self.body = [Vector2(5,10), Vector2(6,10), Vector2(7,10)]
+        self.body = [Vector2(7,10), Vector2(8,10), Vector2(,10)]
         self.direction = Vector2(-1,0)
-        self.moveInterval = 0.1
+        self.moveInterval = 5.0
         self.moveTimer = 0
+        self.step = self.clock.tick(60) / 1000.0
 
     def update(self):
+        self.moveTimer += pygame.time.get_ticks() / (self.moveInterval * 1000)
         if self.moveTimer >= self.moveInterval:
             self.moveTimer -= self.moveInterval
             self.moveSnake()
