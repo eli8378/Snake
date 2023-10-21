@@ -29,6 +29,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        start.startLogic(event)
+        start.quitLogic(event)
+        end.quitLogic(event)
+        end.tryAgainLogic(event)
         if event.type == SCREEN_UPDATE:
             if isPlaying:
                 game.update()
@@ -48,10 +52,10 @@ while running:
 
     if startMenu:
         start.startMenu()
-        if start.startLogic() == "start" or keys[pygame.K_r]:
+        if start.startButtonState == True:
             startMenu = False
             isPlaying = True
-        if start.quitLogic() == "quit" or keys[pygame.K_q]:
+        if start.quitButtonState == True:
             running = False
     if isPlaying:
         screen.fill((175,215,70))
@@ -61,13 +65,13 @@ while running:
             isPlaying = False
     if gameOver:
         end.endMenu()
-        if keys[pygame.K_q]:
+        if end.quitState == True:
             running = False
-        if keys[pygame.K_r]:
+        if end.tryAgainState == True:
             gameOver = False
             isPlaying = True
             game = Game()
-            startMenu = False
+            end = End()
             
 
     pygame.display.update()
