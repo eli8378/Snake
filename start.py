@@ -15,7 +15,7 @@ class Start:
         self.drawTitle()
         self.drawStartButton()
         self.drawQuitButton()
-        pygame.display.update()
+
 
     def drawTitle(self):
         self.startSurface = self.gameFont.render("SNAKE GAME", True, (56,74,12))

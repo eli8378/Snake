@@ -50,7 +50,7 @@ while running:
         if game.checkFailure() == "failed":
             gameOver = True
             isPlaying = False
-    if gameOver:
+    if gameOver:   
         end.endMenu()
         if end.quitState == True:
             running = False
@@ -60,9 +60,8 @@ while running:
             game = Game()
             end = End()
 
-    pygame.display.update()
-
     clock.tick(60)
+    pygame.display.update()
 
 pygame.quit()
 sys.exit()

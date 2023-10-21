@@ -25,12 +25,15 @@ class Game:
         self.fruit.drawFruit()
         self.snake.drawSnake()
         self.drawScore()
-        self.getBody()
 
     def checkCollision(self):
         if self.fruit.pos == self.snake.body[0]:
             self.fruit = Fruit()
             self.snake.body.append(self.snake.body[-1] + self.snake.direction)
+            self.endScore +=1
+    
+    def getBody(self):
+        return self.endScore
 
     def checkFailure(self):
         if not 0 <= self.snake.body[0].x < self.cellNumber:
@@ -49,10 +52,6 @@ class Game:
         self.scoreRect = self.scoreSurface.get_rect(center = (self.scorex, self.scorexy))
         self.screen.blit(self.scoreSurface, self.scoreRect)
 
-    
-    def getBody(self):
-        self.endScore = str(len(self.snake.body) - 3)
-        return self.endScore
     
 
 
