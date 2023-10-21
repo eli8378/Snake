@@ -20,7 +20,6 @@ class End:
         self.tryAgainRect = self.tryAgainSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 + 41, self.cellSize * self.cellNumber / 2 + 120))
 
 
-
     def endMenu(self):
         self.screen.fill((175,215,70))
         self.drawScoreOnEnd()
@@ -31,7 +30,7 @@ class End:
         pygame.display.update()
 
     def drawScoreGameOver(self):
-        self.scoreText = str(len(self.snake.body) - 3)
+        self.scoreText = self.game.getBody()
         self.scoreSurface = self.gameFont.render(self.scoreText, True, (56,74,12))
         self.scoreRect = self.scoreSurface.get_rect(center = (self.cellSize * self.cellNumber / 2 + 45, self.cellSize * self.cellNumber / 2 + 60))
         self.screen.blit(self.scoreSurface, self.scoreRect)

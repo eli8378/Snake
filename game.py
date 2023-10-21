@@ -13,6 +13,8 @@ class Game:
         self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
         self.snake = Snake()
         self.fruit = Fruit()
+        self.endScore = 0
+        self.scoreText = str(len(self.snake.body) - 3)
 
     def update(self):
         self.snake.update()
@@ -23,6 +25,7 @@ class Game:
         self.fruit.drawFruit()
         self.snake.drawSnake()
         self.drawScore()
+        self.getBody()
 
     def checkCollision(self):
         if self.fruit.pos == self.snake.body[0]:
@@ -45,9 +48,12 @@ class Game:
         self.scorexy = int(self.cellSize * self.cellNumber - 40)
         self.scoreRect = self.scoreSurface.get_rect(center = (self.scorex, self.scorexy))
         self.screen.blit(self.scoreSurface, self.scoreRect)
+
     
-
-
+    def getBody(self):
+        self.endScore = str(len(self.snake.body) - 3)
+        return self.endScore
+    
 
 
         
