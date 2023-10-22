@@ -32,8 +32,8 @@ class Game:
             self.snake.body.append(self.snake.body[-1] + self.snake.direction)
             self.endScore +=1
     
-    def getBody(self):
-        return self.endScore
+    def endGame(self):
+        return len(self.snake.body) - 3
 
     def checkFailure(self):
         if not 0 <= self.snake.body[0].x < self.cellNumber:
