@@ -5,6 +5,8 @@ import sys
 from game import Game
 from start import Start
 from end import End
+from paused import Paused
+
 
 pygame.init()
 pygame.display.set_caption("Snake Game")
@@ -12,7 +14,7 @@ clock = pygame.time.Clock()
 game = Game()
 start = Start()
 end = End()
-
+paused = Paused()
 
 
 SCREEN_UPDATE = pygame.USEREVENT
@@ -21,6 +23,7 @@ cellSize = 40
 cellNumber = 20
 startMenu = True
 isPlaying = False
+pausedState = False
 gameOver = False
 screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
 

@@ -6,4 +6,6 @@ To Do:
     - Add Animations
     - Add Sounds
     - Add settings game state with changeable user settings
-    - add a frame rate counter
+    - Add a frame rate counter
+    - Add json file that holds hard coded variables to be used across all classes and main
+    - make snake move faster each time it eats a fruit
