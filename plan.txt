@@ -1,6 +1,7 @@
 To Do:
     - Fix Screen flickering on end menu
     - Add a pause game state
+    - Fix flicker issue upon eating fruit
     - Make buttons more accessible and appealing
     - Add Graphics
     - Add Animations
