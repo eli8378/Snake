@@ -1,6 +1,8 @@
 To Do:
-    - Fix Final Score on End Menu
+    - Fix Screen flickering on end menu
+    - Add a pause game state
     - Make buttons more accessible and appealing
     - Add Graphics
     - Add Animations
     - Add Sounds
+    - Add settings game state with changeable user settings
