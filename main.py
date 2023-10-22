@@ -11,8 +11,8 @@ pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
 game = Game()
 start = Start()
-score = game.endGame()
-end = End(score)
+end = End()
+
 
 
 SCREEN_UPDATE = pygame.USEREVENT
@@ -33,10 +33,11 @@ while running:
         if event.type == SCREEN_UPDATE:
             if isPlaying:
                 game.update()
-        start.startLogic(event)
-        start.quitLogic(event)
+        end.endMenu(event)
         end.quitLogic(event)
         end.tryAgainLogic(event)
+        start.startLogic(event)
+        start.quitLogic(event)
         game.snake.snakeLogic(event)
         
     if startMenu:
@@ -52,15 +53,15 @@ while running:
             gameOver = True
             isPlaying = False
     if gameOver:
-        score = game.endGame()  
-        end = End(score)
-        end.endMenu()
+        score = game.endGame()
+        end.endMenu(score)
         if end.quitState == True:
             running = False
         if end.tryAgainState == True:
             gameOver = False
             isPlaying = True
             game = Game()
+            end = End()
 
     clock.tick(60)
     pygame.display.flip()

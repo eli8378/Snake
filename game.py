@@ -34,7 +34,7 @@ class Game:
             self.endScore +=1
     
     def endGame(self):
-        return len(self.snake.body) - 3
+        return str(len(self.snake.body) - 3)
 
     def checkFailure(self):
         if not 0 <= self.snake.body[0].x < self.cellNumber:
