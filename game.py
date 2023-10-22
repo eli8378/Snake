@@ -22,6 +22,7 @@ class Game:
         self.checkFailure()
 
     def drawElements(self):
+        self.screen.fill((175,215,70))
         self.fruit.drawFruit()
         self.snake.drawSnake()
         self.drawScore()

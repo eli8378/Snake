@@ -7,3 +7,4 @@ To Do:
     - Add Animations
     - Add Sounds
     - Add settings game state with changeable user settings
+    - add a frame rate counter

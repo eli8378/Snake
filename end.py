@@ -28,7 +28,6 @@ class End:
         self.drawScoreGameOver()
         self.drawGameOverText()
         self.screen.blit(self.buffer, (0, 0))
-        pygame.display.flip()
 
     def drawScoreGameOver(self):
         self.scoreSurface = self.gameFont.render(self.scoreText, True, (56,74,12))

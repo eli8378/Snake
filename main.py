@@ -14,6 +14,7 @@ start = Start()
 score = game.endGame()
 end = End(score)
 
+
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 cellSize = 40
@@ -37,7 +38,7 @@ while running:
         end.quitLogic(event)
         end.tryAgainLogic(event)
         game.snake.snakeLogic(event)
-
+        
     if startMenu:
         start.startMenu()
         if start.startButtonState == True:
@@ -46,13 +47,12 @@ while running:
         if start.quitButtonState == True:
             running = False
     if isPlaying:
-        screen.fill((175,215,70))
         game.drawElements()
         if game.checkFailure() == "failed":
             gameOver = True
             isPlaying = False
-    if gameOver:   
-        score = game.endGame()
+    if gameOver:
+        score = game.endGame()  
         end = End(score)
         end.endMenu()
         if end.quitState == True:
@@ -61,10 +61,9 @@ while running:
             gameOver = False
             isPlaying = True
             game = Game()
-            end = End(score)
 
     clock.tick(60)
-    pygame.display.update()
+    pygame.display.flip()
 
 pygame.quit()
 sys.exit()
