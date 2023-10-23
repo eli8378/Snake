@@ -11,7 +11,9 @@ class Fruit:
         self.x = r.randint(0,self.cellNumber - 1)
         self.y = r.randint(0,self.cellNumber - 1)
         self.pos = Vector2(self.x, self.y)
+        self.image = pygame.image.load("images/strawberry.jpg")
 
     def drawFruit(self): 
         fruitRect = pygame.Rect(int(self.pos.x * self.cellSize),int(self.pos.y * self.cellSize), self.cellSize, self.cellSize)
-        pygame.draw.rect(self.screen, (240,166,114), fruitRect)
+        #pygame.draw.rect(self.screen, (240,166,114), fruitRect)
+        self.screen.blit(self.image, fruitRect)
