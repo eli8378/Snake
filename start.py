@@ -33,6 +33,11 @@ class Start:
     def drawStartButton(self):
         self.startButtonSurface = self.gameFont.render("START", True, (0,0,0))
         self.startButtonRect = self.startButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2, config.CELL_SIZE * config.CELL_NUMBER / 2 + 50))
+        self.startButtonBgRect = pygame.Rect(config.CELL_SIZE * config.CELL_NUMBER / 2-36, config.CELL_SIZE * config.CELL_NUMBER / 2 + 35,75,25)
+        pygame.draw.rect(self.screen, (211, 211, 211), self.startButtonBgRect)
+        pos = pygame.mouse.get_pos()
+        if self.startButtonRect.collidepoint(pos):
+            pygame.draw.rect(self.screen, (128, 128, 128), self.startButtonBgRect)
         self.screen.blit(self.startButtonSurface, self.startButtonRect)
 
     def quitLogic(self, event):
@@ -46,4 +51,9 @@ class Start:
     def drawQuitButton(self):
         self.quitButtonSurface = self.gameFont.render("QUIT", True, (0,0,0))
         self.quitButtonRect = self.quitButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2, config.CELL_SIZE * config.CELL_NUMBER / 2 + 100))
+        self.quitButtonBgRect = pygame.Rect(config.CELL_SIZE * config.CELL_NUMBER / 2-36, config.CELL_SIZE * config.CELL_NUMBER / 2 + 87,75,25)
+        pygame.draw.rect(self.screen, (211, 211, 211), self.quitButtonBgRect)
+        pos = pygame.mouse.get_pos()
+        if self.quitButtonRect.collidepoint(pos):
+            pygame.draw.rect(self.screen, (128, 128, 128), self.quitButtonBgRect)
         self.screen.blit(self.quitButtonSurface, self.quitButtonRect)

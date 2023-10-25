@@ -47,11 +47,13 @@ while running:
         if start.quitButtonState is True:
             running = False
     if isPlaying:
+        pygame.mouse.set_visible(False)
         game.drawElements()
         if game.checkFailure() == "failed":
             gameOver = True
             isPlaying = False
     if gameOver:
+        pygame.mouse.set_visible(True)
         score = game.endGame()
         end.endMenu(score)
         if end.quitState is True:

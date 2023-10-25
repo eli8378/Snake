@@ -54,6 +54,11 @@ class End:
     def quitButton(self):
         self.quitButtonSurface = self.gameFont.render("QUIT", True, (0,0,0))
         self.quitButtonRect = self.quitButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2 - 45, config.CELL_SIZE * config.CELL_NUMBER / 2 + 120))
+        self.quitButtonBgRect = pygame.Rect(config.CELL_SIZE * config.CELL_NUMBER / 2-68, config.CELL_SIZE * config.CELL_NUMBER / 2 + 105,50,30)
+        pygame.draw.rect(self.screen, (211, 211, 211), self.quitButtonBgRect)
+        pos = pygame.mouse.get_pos()
+        if self.quitButtonRect.collidepoint(pos):
+            pygame.draw.rect(self.screen, (128, 128, 128), self.quitButtonBgRect)
         self.screen.blit(self.quitButtonSurface, self.quitButtonRect)
 
     def tryAgainLogic(self, event):
@@ -67,4 +72,9 @@ class End:
     def tryAgainButton(self):
         self.tryAgainSurface = self.gameFont.render("TRY AGAIN", True, (0,0,0))
         self.tryAgainRect = self.tryAgainSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2 + 41, config.CELL_SIZE * config.CELL_NUMBER / 2 + 120))
+        self.tryAgainButtonBgRect = pygame.Rect(config.CELL_SIZE * config.CELL_NUMBER / 2-10, config.CELL_SIZE * config.CELL_NUMBER / 2 + 105,100,30)
+        pygame.draw.rect(self.screen, (211, 211, 211), self.tryAgainButtonBgRect)
+        pos = pygame.mouse.get_pos()
+        if self.tryAgainRect.collidepoint(pos):
+            pygame.draw.rect(self.screen, (128, 128, 128), self.tryAgainButtonBgRect)
         self.screen.blit(self.tryAgainSurface, self.tryAgainRect)
