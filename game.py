@@ -1,5 +1,6 @@
 from fruit import Fruit
 from snake import Snake
+import config
 
 import pygame
 
@@ -7,10 +8,8 @@ import pygame
 class Game:
     def __init__(self):
         self.pressed = pygame.mouse.get_pressed()
-        self.cellSize = 40
-        self.cellNumber = 20
         self.gameFont = pygame.font.Font(None, 25)
-        self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
+        self.screen = pygame.display.set_mode((config.CELL_NUMBER * config.CELL_SIZE, config.CELL_NUMBER * config.CELL_SIZE))
         self.snake = Snake()
         self.fruit = Fruit()
         self.endScore = 0
@@ -22,7 +21,7 @@ class Game:
         self.checkFailure()
 
     def drawElements(self):
-        self.screen.fill((175,215,70))
+        self.screen.fill((175,215,250))
         self.fruit.drawFruit()
         self.snake.drawSnake()
         self.drawScore()
@@ -37,9 +36,9 @@ class Game:
         return str(len(self.snake.body) - 3)
 
     def checkFailure(self):
-        if not 0 <= self.snake.body[0].x < self.cellNumber:
+        if not 0 <= self.snake.body[0].x < config.CELL_NUMBER:
             return "failed"
-        elif not 0 <= self.snake.body[0].y < self.cellNumber:
+        elif not 0 <= self.snake.body[0].y < config.CELL_NUMBER:
             return "failed"
         for block in self.snake.body[1:]:
             if block == self.snake.body[0]:
@@ -47,9 +46,9 @@ class Game:
 
     def drawScore(self):
         self.scoreText = str(len(self.snake.body) - 3)
-        self.scoreSurface = self.gameFont.render(self.scoreText, True, (56,74,12))
-        self.scorex = int(self.cellSize * self.cellNumber - 60)
-        self.scorexy = int(self.cellSize * self.cellNumber - 40)
+        self.scoreSurface = self.gameFont.render(self.scoreText, True, (0,0,0))
+        self.scorex = int(config.CELL_SIZE * config.CELL_NUMBER - 60)
+        self.scorexy = int(config.CELL_SIZE * config.CELL_NUMBER - 40)
         self.scoreRect = self.scoreSurface.get_rect(center = (self.scorex, self.scorexy))
         self.screen.blit(self.scoreSurface, self.scoreRect)
 

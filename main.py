@@ -5,6 +5,7 @@ import sys
 from game import Game
 from start import Start
 from end import End
+import config
 
 
 pygame.init()
@@ -16,13 +17,11 @@ end = End()
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
-cellSize = 40
-cellNumber = 20
 startMenu = True
 isPlaying = False
 pausedState = False
 gameOver = False
-screen = pygame.display.set_mode((cellNumber * cellSize, cellNumber * cellSize))
+screen = pygame.display.set_mode((config.CELL_NUMBER * config.CELL_SIZE, config.CELL_NUMBER * config.CELL_SIZE))
 
 running = True
 while running:

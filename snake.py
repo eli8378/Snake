@@ -1,16 +1,18 @@
 import pygame
 from pygame.math import Vector2
 
+import config
 
-class Snake:
+
+class Snake(pygame.sprite.Sprite):
     def __init__(self):
-        self.cellSize = 40
-        self.cellNumber = 20
-        self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
+        super().__init__()
+        self.screen = pygame.display.set_mode((config.CELL_NUMBER * config.CELL_SIZE, config.CELL_NUMBER * config.CELL_SIZE))
         self.body = [Vector2(10,10), Vector2(11,10), Vector2(12,10)]
         self.direction = Vector2(-1,0)
         self.moveInterval = 1.0
         self.moveTimer = 0
+        self.snakeBody = pygame.image.load("images/snakeBody.png")
 
     def update(self):
         self.moveTimer += pygame.time.get_ticks() / (self.moveInterval * 1000)
@@ -20,10 +22,10 @@ class Snake:
 
     def drawSnake(self):
         for block in self.body:
-            self.xpos = int(block.x * self.cellSize)
-            self.ypos = int(block.y * self.cellSize)
-            blockRect = pygame.Rect(self.xpos, self.ypos, self.cellSize, self.cellSize)
-            pygame.draw.rect(self.screen, (183,191,230), blockRect)
+            self.xpos = int(block.x * config.CELL_SIZE)
+            self.ypos = int(block.y * config.CELL_SIZE)
+            blockRect = pygame.Rect(self.xpos, self.ypos, config.CELL_SIZE, config.CELL_SIZE)
+            self.screen.blit(self.snakeBody, blockRect)
 
     def moveSnake(self):
         bodyCopy = self.body[:-1]

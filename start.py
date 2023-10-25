@@ -1,25 +1,25 @@
 import pygame
 
+import config
+
 
 class Start:
     def __init__(self):
-        self.cellSize = 40
-        self.cellNumber = 20
-        self.screen = pygame.display.set_mode((self.cellNumber * self.cellSize, self.cellNumber * self.cellSize))
+        self.screen = pygame.display.set_mode((config.CELL_NUMBER * config.CELL_SIZE, config.CELL_NUMBER * config.CELL_SIZE))
         self.gameFont = pygame.font.Font(None, 25)
         self.startButtonState = False
         self.quitButtonState = False
     
     def startMenu(self):
-        self.screen.fill((175,215,70))
+        self.screen.fill((175,215,250))
         self.drawTitle()
         self.drawStartButton()
         self.drawQuitButton()
 
 
     def drawTitle(self):
-        self.startSurface = self.gameFont.render("SNAKE GAME", True, (56,74,12))
-        self.startRect = self.startSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2))
+        self.startSurface = self.gameFont.render("SNAKE GAME", True, (0,0,0))
+        self.startRect = self.startSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2, config.CELL_SIZE * config.CELL_NUMBER / 2))
         self.screen.blit(self.startSurface, self.startRect)
 
     def startLogic(self, event):
@@ -31,8 +31,8 @@ class Start:
                 self.startButtonState = False
 
     def drawStartButton(self):
-        self.startButtonSurface = self.gameFont.render("START", True, (56,74,12))
-        self.startButtonRect = self.startButtonSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2 + 50))
+        self.startButtonSurface = self.gameFont.render("START", True, (0,0,0))
+        self.startButtonRect = self.startButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2, config.CELL_SIZE * config.CELL_NUMBER / 2 + 50))
         self.screen.blit(self.startButtonSurface, self.startButtonRect)
 
     def quitLogic(self, event):
@@ -44,6 +44,6 @@ class Start:
                 self.quitButtonState = False
     
     def drawQuitButton(self):
-        self.quitButtonSurface = self.gameFont.render("QUIT", True, (56,74,12))
-        self.quitButtonRect = self.quitButtonSurface.get_rect(center = (self.cellSize * self.cellNumber / 2, self.cellSize * self.cellNumber / 2 + 100))
+        self.quitButtonSurface = self.gameFont.render("QUIT", True, (0,0,0))
+        self.quitButtonRect = self.quitButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2, config.CELL_SIZE * config.CELL_NUMBER / 2 + 100))
         self.screen.blit(self.quitButtonSurface, self.quitButtonRect)
