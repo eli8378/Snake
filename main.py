@@ -16,7 +16,6 @@ start = Start()
 end = End()
 paused = Paused()
 
-
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 cellSize = 40
