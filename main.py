@@ -5,7 +5,6 @@ import sys
 from game import Game
 from start import Start
 from end import End
-from paused import Paused
 
 
 pygame.init()
@@ -14,7 +13,6 @@ clock = pygame.time.Clock()
 game = Game()
 start = Start()
 end = End()
-paused = Paused()
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
@@ -44,10 +42,10 @@ while running:
         
     if startMenu:
         start.startMenu()
-        if start.startButtonState == True:
+        if start.startButtonState is True:
             startMenu = False
             isPlaying = True
-        if start.quitButtonState == True:
+        if start.quitButtonState is True:
             running = False
     if isPlaying:
         game.drawElements()
@@ -57,9 +55,9 @@ while running:
     if gameOver:
         score = game.endGame()
         end.endMenu(score)
-        if end.quitState == True:
+        if end.quitState is True:
             running = False
-        if end.tryAgainState == True:
+        if end.tryAgainState is True:
             gameOver = False
             isPlaying = True
             game = Game()
