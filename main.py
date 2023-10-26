@@ -27,7 +27,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == SCREEN_UPDATE:
+        elif event.type == SCREEN_UPDATE:
             if isPlaying:
                 game.update()
         end.endMenu(event)
@@ -42,21 +42,21 @@ while running:
         if start.startButtonState is True:
             startMenu = False
             isPlaying = True
-        if start.quitButtonState is True:
+        elif start.quitButtonState is True:
             running = False
-    if isPlaying:
+    elif isPlaying:
         pygame.mouse.set_visible(False)
         game.drawElements()
         if game.checkFailure() == "failed":
             gameOver = True
             isPlaying = False
-    if gameOver:
+    elif gameOver:
         pygame.mouse.set_visible(True)
         score = game.endGame()
         end.endMenu(score)
         if end.quitState is True:
             running = False
-        if end.tryAgainState is True:
+        elif end.tryAgainState is True:
             gameOver = False
             isPlaying = True
             game = Game()
