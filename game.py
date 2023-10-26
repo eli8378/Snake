@@ -12,6 +12,7 @@ class Game:
         self.snake = Snake()
         self.fruit = Fruit()
         self.endScore = 0
+        self.grass = pygame.image.load("images/grass.png")
         self.scoreText = str(len(self.snake.body) - 3)
 
     def update(self):
@@ -20,7 +21,7 @@ class Game:
         self.checkFailure()
 
     def drawElements(self):
-        config.screen.fill((175,215,250))
+        config.screen.blit(self.grass, (0,0))
         self.fruit.drawFruit()
         self.snake.drawSnake()
         self.drawScore()
