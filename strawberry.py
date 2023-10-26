@@ -5,7 +5,7 @@ import config
 
 import random as r
 
-class Fruit(pygame.sprite.Sprite):
+class Strawberry(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.x = r.randint(0,config.CELL_NUMBER - 1)
@@ -13,6 +13,6 @@ class Fruit(pygame.sprite.Sprite):
         self.pos = Vector2(self.x, self.y)
         self.image = pygame.image.load("images/strawberry.png")
 
-    def drawFruit(self): 
-        fruitRect = pygame.Rect(int(self.pos.x * config.CELL_SIZE),int(self.pos.y * config.CELL_SIZE), config.CELL_SIZE, config.CELL_SIZE)
-        config.screen.blit(self.image, fruitRect)
+    def drawStrawberry(self): 
+        strawberryRect = pygame.Rect(int(self.pos.x * config.CELL_SIZE),int(self.pos.y * config.CELL_SIZE), config.CELL_SIZE, config.CELL_SIZE)
+        config.screen.blit(self.image, strawberryRect)

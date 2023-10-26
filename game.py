@@ -1,4 +1,4 @@
-from fruit import Fruit
+from strawberry import Strawberry
 from snake import Snake
 import config
 
@@ -10,7 +10,7 @@ class Game:
         self.pressed = pygame.mouse.get_pressed()
         self.gameFont = pygame.font.Font(None, 25)
         self.snake = Snake()
-        self.fruit = Fruit()
+        self.strawberry = Strawberry()
         self.endScore = 0
         self.grass = pygame.image.load("images/grass.png")
         self.scoreText = str(len(self.snake.body) - 3)
@@ -22,13 +22,13 @@ class Game:
 
     def drawElements(self):
         config.screen.blit(self.grass, (0,0))
-        self.fruit.drawFruit()
+        self.strawberry.drawStrawberry()
         self.snake.drawSnake()
         self.drawScore()
 
     def checkCollision(self):
-        if self.fruit.pos == self.snake.body[0]:
-            self.fruit = Fruit()
+        if self.strawberry.pos == self.snake.body[0]:
+            self.strawberry = Strawberry()
             self.snake.body.append(self.snake.body[-1] + self.snake.direction)
             self.endScore +=1
 

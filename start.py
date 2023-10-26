@@ -10,7 +10,7 @@ class Start:
         self.quitButtonState = False
     
     def startMenu(self):
-        config.screen.fill((175,215,250))
+        config.screen.fill((115,221,45))
         self.drawTitle()
         self.drawStartButton()
         self.drawQuitButton()

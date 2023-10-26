@@ -18,7 +18,7 @@ class End:
         self.tryAgainRect = self.tryAgainSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2 + 41, config.CELL_SIZE * config.CELL_NUMBER / 2 + 120))
 
     def endMenu(self, score):
-        config.screen.fill((175,215,250))
+        config.screen.fill((115,221,45))
         self.drawScoreOnEnd()
         self.quitButton()
         self.tryAgainButton()
