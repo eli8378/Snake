@@ -7,7 +7,6 @@ import config
 class Snake(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.screen = pygame.display.set_mode((config.CELL_NUMBER * config.CELL_SIZE, config.CELL_NUMBER * config.CELL_SIZE))
         self.body = [Vector2(10,10), Vector2(11,10), Vector2(12,10)]
         self.direction = Vector2(-1,0)
         self.moveInterval = 1.0
@@ -25,7 +24,7 @@ class Snake(pygame.sprite.Sprite):
             self.xpos = int(block.x * config.CELL_SIZE)
             self.ypos = int(block.y * config.CELL_SIZE)
             blockRect = pygame.Rect(self.xpos, self.ypos, config.CELL_SIZE, config.CELL_SIZE)
-            self.screen.blit(self.snakeBody, blockRect)
+            config.screen.blit(self.snakeBody, blockRect)
 
     def moveSnake(self):
         bodyCopy = self.body[:-1]

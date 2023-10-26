@@ -9,7 +9,6 @@ class Game:
     def __init__(self):
         self.pressed = pygame.mouse.get_pressed()
         self.gameFont = pygame.font.Font(None, 25)
-        self.screen = pygame.display.set_mode((config.CELL_NUMBER * config.CELL_SIZE, config.CELL_NUMBER * config.CELL_SIZE))
         self.snake = Snake()
         self.fruit = Fruit()
         self.endScore = 0
@@ -21,7 +20,7 @@ class Game:
         self.checkFailure()
 
     def drawElements(self):
-        self.screen.fill((175,215,250))
+        config.screen.fill((175,215,250))
         self.fruit.drawFruit()
         self.snake.drawSnake()
         self.drawScore()
@@ -31,6 +30,7 @@ class Game:
             self.fruit = Fruit()
             self.snake.body.append(self.snake.body[-1] + self.snake.direction)
             self.endScore +=1
+
     
     def endGame(self):
         return str(len(self.snake.body) - 3)
@@ -50,7 +50,7 @@ class Game:
         self.scorex = int(config.CELL_SIZE * config.CELL_NUMBER - 60)
         self.scorexy = int(config.CELL_SIZE * config.CELL_NUMBER - 40)
         self.scoreRect = self.scoreSurface.get_rect(center = (self.scorex, self.scorexy))
-        self.screen.blit(self.scoreSurface, self.scoreRect)
+        config.screen.blit(self.scoreSurface, self.scoreRect)
 
     
 
