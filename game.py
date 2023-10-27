@@ -1,7 +1,6 @@
 from strawberry import Strawberry
 from snake import Snake
 import config
-
 import pygame
 
 
@@ -13,7 +12,10 @@ class Game:
         self.strawberry = Strawberry()
         self.endScore = 0
         self.bgImage = pygame.image.load("images/snakebackroundupdated.png")
+        self.bgImage = pygame.transform.scale(self.bgImage, (800,800))
         self.scoreText = str(len(self.snake.body) - 3)
+        self.eatSound = pygame.mixer.Sound('vine-boom.mp3')
+        
 
     def update(self):
         self.snake.update()
@@ -21,7 +23,7 @@ class Game:
         self.checkFailure()
 
     def drawElements(self):
-        config.screen.blit(self.grass, (0,0))
+        config.screen.blit(self.bgImage, (0,0))
         self.strawberry.drawStrawberry()
         self.snake.drawSnake()
         self.drawScore()
@@ -30,7 +32,10 @@ class Game:
         if self.strawberry.pos == self.snake.body[0]:
             self.strawberry = Strawberry()
             self.snake.body.append(self.snake.body[-1] + self.snake.direction)
+            pygame.mixer.Sound.play(self.eatSound)
+            pygame.mixer.music.stop()
             self.endScore +=1
+            
 
     
     def endGame(self):
