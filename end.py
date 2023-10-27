@@ -47,8 +47,6 @@ class End:
             pos = pygame.mouse.get_pos()
             if self.quitButtonRect.collidepoint(pos):
                 self.quitState = True
-            else:
-                self.quitState = False
 
     def quitButton(self):
         self.quitButtonSurface = self.gameFont.render("QUIT", True, (0,0,0))
@@ -65,8 +63,6 @@ class End:
             pos = pygame.mouse.get_pos()
             if self.tryAgainRect.collidepoint(pos):
                 self.tryAgainState = True
-            else:
-                self.tryAgainState = False
 
     def tryAgainButton(self):
         self.tryAgainSurface = self.gameFont.render("TRY AGAIN", True, (0,0,0))
