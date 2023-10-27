@@ -11,8 +11,8 @@ class Game:
         self.snake = Snake()
         self.strawberry = Strawberry()
         self.endScore = 0
-        #self.bgImage = pygame.image.load("images/snakebackroundupdated.png")
-        #self.bgImage = pygame.transform.scale(self.bgImage, (800,800))
+        self.bgImage = pygame.image.load("images/snakebackroundupdated.png")
+        self.bgImage = pygame.transform.scale(self.bgImage, (800,800))
         self.scoreText = str(len(self.snake.body) - 3)
         self.eatSound = pygame.mixer.Sound('sounds/crunch.mp3')
         self.eatSound.set_volume(0.3)

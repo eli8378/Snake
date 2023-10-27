@@ -7,15 +7,12 @@ class Start:
         self.gameFont = pygame.font.Font(None, 25)
         self.startButtonState = False
         self.quitButtonState = False
-        self.settingsButtonState = False
-
     
     def startMenu(self):
         config.screen.fill((115,221,45))
         self.drawTitle()
         self.drawStartButton()
         self.drawQuitButton()
-        self.drawSettingsButton()
 
 
     def drawTitle(self):
@@ -28,6 +25,8 @@ class Start:
             pos = pygame.mouse.get_pos()
             if self.startButtonRect.collidepoint(pos):
                 self.startButtonState = True
+            else:
+                self.startButtonState = False
 
     def drawStartButton(self):
         self.startButtonSurface = self.gameFont.render("START", True, (0,0,0))
@@ -44,6 +43,8 @@ class Start:
             pos = pygame.mouse.get_pos()
             if self.quitButtonRect.collidepoint(pos):
                 self.quitButtonState = True
+            else:
+                self.quitButtonState = False
     
     def drawQuitButton(self):
         self.quitButtonSurface = self.gameFont.render("QUIT", True, (0,0,0))
@@ -54,15 +55,6 @@ class Start:
         if self.quitButtonRect.collidepoint(pos):
             pygame.draw.rect(config.screen, (128, 128, 128), self.quitButtonBgRect)
         config.screen.blit(self.quitButtonSurface, self.quitButtonRect)
-
-    def drawSettingsButton(self):
-        self.settingsImage = pygame.image.load("images/settings.png")
-        self.settingsRect = self.quitButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2, config.CELL_SIZE * config.CELL_NUMBER / 2 + 200))
-        config.screen.blit(self.settingsImage, self.settingsRect)
-
     
-    def settingsLogic(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            pos = pygame.mouse.get_pos()
-            if self.settingsRect.collidepoint(pos):
-                self.settingsButtonState = True
+    def drawSettingsButton(self):
+        return
