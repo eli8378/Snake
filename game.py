@@ -24,7 +24,7 @@ class Game:
         self.checkFailure()
 
     def drawElements(self):
-        config.screen.blit(self.bgImage, (0,0))
+        config.screen.fill((115,221,45))
         self.strawberry.drawStrawberry()
         self.snake.drawSnake()
         self.drawScore()
@@ -36,8 +36,6 @@ class Game:
             pygame.mixer.Sound.play(self.eatSound)
             pygame.mixer.music.stop()
             self.endScore +=1
-            
-
     
     def endGame(self):
         return str(len(self.snake.body) - 3)
