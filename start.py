@@ -2,7 +2,6 @@ import pygame
 
 import config
 
-
 class Start:
     def __init__(self):
         self.gameFont = pygame.font.Font(None, 25)
@@ -56,3 +55,6 @@ class Start:
         if self.quitButtonRect.collidepoint(pos):
             pygame.draw.rect(config.screen, (128, 128, 128), self.quitButtonBgRect)
         config.screen.blit(self.quitButtonSurface, self.quitButtonRect)
+    
+    def drawSettingsButton(self):
+        return

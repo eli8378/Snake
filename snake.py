@@ -30,10 +30,7 @@ class Snake(pygame.sprite.Sprite):
                 config.screen.blit(self.snakeHead, blockRect)
             else:
                 config.screen.blit(self.snakeBody, blockRect)
-    
-
             
-
     def moveSnake(self):
         bodyCopy = self.body[:-1]
         bodyCopy.insert(0, bodyCopy[0] + self.direction)

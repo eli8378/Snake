@@ -20,6 +20,7 @@ startMenu = True
 isPlaying = False
 pausedState = False
 gameOver = False
+settings = False
 
 running = True
 while running:
