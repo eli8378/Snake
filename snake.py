@@ -21,7 +21,6 @@ class Snake(pygame.sprite.Sprite):
             self.moveSnake()
 
     def drawSnake(self):
-        self.drawSnakeHead()
         for index,block in enumerate(self.body):
             self.xpos = int(block.x * config.CELL_SIZE)
             self.ypos = int(block.y * config.CELL_SIZE)
@@ -32,10 +31,7 @@ class Snake(pygame.sprite.Sprite):
             else:
                 config.screen.blit(self.snakeBody, blockRect)
     
-    def drawSnakeHead(self):
-        self.snakeHeadLocation = self.body[1] - self.body[0]
-        if self.snakeHeadLocation == Vector2(1,0):
-            self.snakeHead = pygame.transform.rotate(self.snakeHead, 270)
+
             
 
     def moveSnake(self):
