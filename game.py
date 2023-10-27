@@ -1,6 +1,7 @@
 from strawberry import Strawberry
 from snake import Snake
 import config
+
 import pygame
 
 
