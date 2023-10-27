@@ -11,7 +11,7 @@ class Game:
         self.snake = Snake()
         self.strawberry = Strawberry()
         self.endScore = 0
-        self.bgImage = pygame.image.load("images/snakebackroundupdated.png")
+        self.bgImage = pygame.image.load("images/grass.jpeg")
         self.bgImage = pygame.transform.scale(self.bgImage, (800,800))
         self.scoreText = str(len(self.snake.body) - 3)
         self.eatSound = pygame.mixer.Sound('sounds/crunch.mp3')
@@ -25,7 +25,7 @@ class Game:
 
     #Draws everything onto the game screen
     def drawElements(self):
-        config.screen.fill((115,221,45))
+        config.screen.blit(self.bgImage, (0,0))
         self.strawberry.drawStrawberry()
         self.snake.drawSnake()
         self.drawScore()
@@ -47,8 +47,10 @@ class Game:
     def checkFailure(self):
         if not 0 <= self.snake.body[0].x < config.CELL_NUMBER:
             return "failed"
+        
         elif not 0 <= self.snake.body[0].y < config.CELL_NUMBER:
             return "failed"
+        
         for block in self.snake.body[1:]:
             if block == self.snake.body[0]:
                 return "failed"

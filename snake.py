@@ -28,8 +28,10 @@ class Snake(pygame.sprite.Sprite):
             self.ypos = int(block.y * config.CELL_SIZE)
             blockRect = pygame.Rect(self.xpos, self.ypos, config.CELL_SIZE, config.CELL_SIZE)
             config.screen.blit(self.snakeBody, blockRect)
+
             if index == 0:
                 config.screen.blit(self.snakeHead, blockRect)
+
             else:
                 config.screen.blit(self.snakeBody, blockRect)
     
@@ -44,12 +46,15 @@ class Snake(pygame.sprite.Sprite):
             if event.key == pygame.K_UP:
                 if self.direction.y != 1:
                     self.direction = Vector2(0,-1)
+
             if event.key == pygame.K_DOWN:
                 if self.direction.y != -1:
                     self.direction = Vector2(0,1)
+
             if event.key == pygame.K_LEFT:
                 if self.direction.x != 1:
                     self.direction = Vector2(-1,0)
+                    
             if event.key == pygame.K_RIGHT:
                 if self.direction.x != -1:
                     self.direction = Vector2(1,0)

@@ -1,3 +1,7 @@
+#Eli Stewart and Jace Wilson
+#10/18/23
+#Snake game using python and pygame
+
 import pygame
 
 import sys
@@ -34,11 +38,11 @@ while running:
 
         #Functions that define the events for clicking on buttons and controlling the snake
         end.endMenu(event)
-        end.quitLogic(event)
-        end.tryAgainLogic(event)
-        start.startLogic(event)
-        start.quitLogic(event)
-        game.snake.snakeLogic(event)
+        end.quitClick(event)
+        end.tryAgainClick(event)
+        start.startClick(event)
+        start.quitClick(event)
+        game.snake.snakeMovement(event)
     
     #If start menu is true, run the start menu function which draws all of the start menus elements
     if startMenu:
@@ -62,8 +66,10 @@ while running:
         pygame.mouse.set_visible(True)
         score = game.endGame()
         end.endMenu(score)
+
         if end.quitState is True:
             running = False
+
         elif end.tryAgainState is True:
             gameOver = False
             isPlaying = True

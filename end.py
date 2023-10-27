@@ -11,7 +11,6 @@ class End:
         self.game = Game()
         self.quitState = False
         self.tryAgainState = False
-
         self.quitButtonSurface = self.gameFont.render("QUIT", True, (0,0,0))
         self.quitButtonRect = self.quitButtonSurface.get_rect(center = (config.CELL_SIZE * config.CELL_NUMBER / 2 - 45, config.CELL_SIZE * config.CELL_NUMBER / 2 + 120))
         self.tryAgainSurface = self.gameFont.render("TRY AGAIN", True, (0,0,0))
@@ -46,7 +45,7 @@ class End:
         config.screen.blit(self.showScoreSurface, self.showScoreRect)
         
     #Defines event for mouse click on quit button
-    def quitLogic(self, event):
+    def quitClick(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if self.quitButtonRect.collidepoint(pos):
@@ -67,7 +66,7 @@ class End:
         config.screen.blit(self.quitButtonSurface, self.quitButtonRect)
 
     #Defines event for mouse click on try again button
-    def tryAgainLogic(self, event):
+    def tryAgainClick(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if self.tryAgainRect.collidepoint(pos):
