@@ -12,6 +12,7 @@ class Snake(pygame.sprite.Sprite):
         self.moveInterval = 1.0
         self.moveTimer = 0
         self.snakeBody = pygame.image.load("images/snakeBody.png")
+        self.snakeHead = pygame.image.load("images/snakeHead.png")
 
     def update(self):
         self.moveTimer += pygame.time.get_ticks() / (self.moveInterval * 1000)
@@ -20,11 +21,22 @@ class Snake(pygame.sprite.Sprite):
             self.moveSnake()
 
     def drawSnake(self):
-        for block in self.body:
+        self.drawSnakeHead()
+        for index,block in enumerate(self.body):
             self.xpos = int(block.x * config.CELL_SIZE)
             self.ypos = int(block.y * config.CELL_SIZE)
             blockRect = pygame.Rect(self.xpos, self.ypos, config.CELL_SIZE, config.CELL_SIZE)
             config.screen.blit(self.snakeBody, blockRect)
+            if index == 0:
+                config.screen.blit(self.snakeHead, blockRect)
+            else:
+                config.screen.blit(self.snakeBody, blockRect)
+    
+    def drawSnakeHead(self):
+        self.snakeHeadLocation = self.body[1] - self.body[0]
+        if self.snakeHeadLocation == Vector2(1,0):
+            self.snakeHead = pygame.transform.rotate(self.snakeHead, 270)
+            
 
     def moveSnake(self):
         bodyCopy = self.body[:-1]

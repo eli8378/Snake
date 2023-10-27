@@ -12,7 +12,7 @@ class Game:
         self.snake = Snake()
         self.strawberry = Strawberry()
         self.endScore = 0
-        self.grass = pygame.image.load("images/grass.png")
+        self.bgImage = pygame.image.load("images/snakebackroundupdated.png")
         self.scoreText = str(len(self.snake.body) - 3)
 
     def update(self):
