@@ -14,12 +14,14 @@ class Snake(pygame.sprite.Sprite):
         self.snakeBody = pygame.image.load("images/snakeBody.png")
         self.snakeHead = pygame.image.load("images/snakeHead.png")
 
+    #Prevents snake from accelerating while moving and also moves it
     def update(self):
         self.moveTimer += pygame.time.get_ticks() / (self.moveInterval * 1000)
         if self.moveTimer >= self.moveInterval:
             self.moveTimer -= self.moveInterval
             self.moveSnake()
 
+    #Draws the snake
     def drawSnake(self):
         for index,block in enumerate(self.body):
             self.xpos = int(block.x * config.CELL_SIZE)
@@ -30,23 +32,24 @@ class Snake(pygame.sprite.Sprite):
                 config.screen.blit(self.snakeHead, blockRect)
             else:
                 config.screen.blit(self.snakeBody, blockRect)
-            
+    
     def moveSnake(self):
         bodyCopy = self.body[:-1]
         bodyCopy.insert(0, bodyCopy[0] + self.direction)
         self.body = bodyCopy[:]
 
-    def snakeLogic(self, event):
+    #Defines movement for snake using arrow keys
+    def snakeMovement(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
+            if event.key == pygame.K_UP:
                 if self.direction.y != 1:
                     self.direction = Vector2(0,-1)
-            if event.key == pygame.K_s:
+            if event.key == pygame.K_DOWN:
                 if self.direction.y != -1:
                     self.direction = Vector2(0,1)
-            if event.key == pygame.K_a:
+            if event.key == pygame.K_LEFT:
                 if self.direction.x != 1:
                     self.direction = Vector2(-1,0)
-            if event.key == pygame.K_d:
+            if event.key == pygame.K_RIGHT:
                 if self.direction.x != -1:
                     self.direction = Vector2(1,0)

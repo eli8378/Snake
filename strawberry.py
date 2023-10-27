@@ -13,6 +13,7 @@ class Strawberry(pygame.sprite.Sprite):
         self.pos = Vector2(self.x, self.y)
         self.image = pygame.image.load("images/strawberry.png")
 
+    #Draws the stawberry at a random position on the screen
     def drawStrawberry(self): 
         strawberryRect = pygame.Rect(int(self.pos.x * config.CELL_SIZE),int(self.pos.y * config.CELL_SIZE), config.CELL_SIZE, config.CELL_SIZE)
         config.screen.blit(self.image, strawberryRect)
