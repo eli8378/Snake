@@ -56,5 +56,3 @@ class Start:
             pygame.draw.rect(config.screen, (128, 128, 128), self.quitButtonBgRect)
         config.screen.blit(self.quitButtonSurface, self.quitButtonRect)
     
-    def drawSettingsButton(self):
-        return
