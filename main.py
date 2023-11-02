@@ -17,6 +17,7 @@ clock = pygame.time.Clock()
 game = Game()
 start = Start()
 end = End()
+
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 startMenu = True
